@@ -1,112 +1,72 @@
-import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
+import { component$, useSignal } from "@builder.io/qwik";
+import type { DocumentHead } from "@builder.io/qwik-city";
+import { Recommendations } from "~/components/home/recommendations";
+import logo from "/logo/dept.svg";
+import { Forecast } from "~/components/home/forecast";
+import { Subscribe } from "~/components/home/subscribe";
 
-import Counter from '~/components/starter/counter/counter';
-import Hero from '~/components/starter/hero/hero';
-import Infobox from '~/components/starter/infobox/infobox';
-import Starter from '~/components/starter/next-steps/next-steps';
 
 export default component$(() => {
+  const isCollapsed = useSignal(true);
+
   return (
-    <>
-      <Hero />
-      <Starter />
+    <div class="flex flex-col xl:flex-row xl:gap-[3%] mb-12">
+      <div class="flex flex-col xl:flex-1 xl:sticky xl:top-0 xl:left-0">
+        <div class="bg-purple px-5 pt-5 text-white md:flex xl:items-end md:flex-col md:items-center card">
+          <div class="max-w-[600px]">
+            <img src={logo} alt="Logo" width={88} height={25} />
+            <h1 class="mt-[70px] mb-[30px] ">DEPT® weather planner</h1>
 
-      <div role="presentation" class="ellipsis"></div>
-      <div role="presentation" class="ellipsis ellipsis-purple"></div>
-
-      <div class="container container-center container-spacing-xl">
-        <h3>
-          You can <span class="highlight">count</span>
-          <br /> on me
-        </h3>
-        <Counter />
-      </div>
-
-      <div class="container container-flex">
-        <Infobox>
-          <div q:slot="title" class="icon icon-cli">
-            CLI Commands
+            <p class="text-white">
+              Picture this: an application that doesn't just tell you the
+              weather, but also helps you plan your activities around it.
+              Imagine knowing exactly the perfect day to plan that hike, or when
+              to avoid the outdoor concert due to an unexpected shower. That's
+              exactly what the Dept Weather Planner offers you.
+            </p>
+            <p
+              aria-hidden={isCollapsed.value}
+              class={`transition-all text-white ${
+                isCollapsed.value
+                  ? "opacity-0 h-0 my-4"
+                  : "opacity-100 h-auto my-8"
+              }`}
+            >
+              Built with cutting-edge technologies, our weather planner brings
+              you accurate, real-time weather data with a slick and
+              user-friendly interface. But it's not just a weather app; it's an
+              intuitive daily planner that syncs with the weather. With a range
+              of activities to choose from, it suggests the best options based
+              on current and forecasted weather conditions.
+            </p>
+            <button
+              class="border-b-[1px] select-none cursor-pointer lg:border-0 font-light text-base leading-[30px] p-2 -m-2 mb-5 "
+              onClick$={() => {
+                isCollapsed.value = !isCollapsed.value;
+              }}
+            >
+              Read {isCollapsed.value ? "more" : "less"}
+            </button>
           </div>
-          <>
-            <p>
-              <code>npm run dev</code>
-              <br />
-              Starts the development server and watches for changes
-            </p>
-            <p>
-              <code>npm run preview</code>
-              <br />
-              Creates production build and starts a server to preview it
-            </p>
-            <p>
-              <code>npm run build</code>
-              <br />
-              Creates production build
-            </p>
-            <p>
-              <code>npm run qwik add</code>
-              <br />
-              Runs the qwik CLI to add integrations
-            </p>
-          </>
-        </Infobox>
-
-        <div>
-          <Infobox>
-            <div q:slot="title" class="icon icon-apps">
-              Example Apps
-            </div>
-            <p>
-              Have a look at the <a href="/demo/flower">Flower App</a> or the{' '}
-              <a href="/demo/todolist">Todo App</a>.
-            </p>
-          </Infobox>
-
-          <Infobox>
-            <div q:slot="title" class="icon icon-community">
-              Community
-            </div>
-            <ul>
-              <li>
-                <span>Questions or just want to say hi? </span>
-                <a href="https://qwik.builder.io/chat" target="_blank">
-                  Chat on discord!
-                </a>
-              </li>
-              <li>
-                <span>Follow </span>
-                <a href="https://twitter.com/QwikDev" target="_blank">
-                  @QwikDev
-                </a>
-                <span> on Twitter</span>
-              </li>
-              <li>
-                <span>Open issues and contribute on </span>
-                <a href="https://github.com/BuilderIO/qwik" target="_blank">
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <span>Watch </span>
-                <a href="https://qwik.builder.io/media/" target="_blank">
-                  Presentations, Podcasts, Videos, etc.
-                </a>
-              </li>
-            </ul>
-          </Infobox>
+        </div>
+        <Subscribe />
+      </div>
+      <div class="flex flex-col p-5 items-center xl:flex-1 xl:items-start">
+        <div class="max-w-[600px] flex flex-col gap-[30px]">
+          <Forecast />
+          <Recommendations />
         </div>
       </div>
-    </>
+    </div>
   );
 });
 
 export const head: DocumentHead = {
-  title: 'Welcome to Qwik',
+  title: "DEPT® weather planner",
   meta: [
     {
-      name: 'description',
-      content: 'Qwik site description',
+      name: "description",
+      content: "Plan your activities with the Dept weather planner.",
     },
   ],
 };
