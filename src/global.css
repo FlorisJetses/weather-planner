@@ -1,28 +1,6 @@
-/**
- * Tailwind CSS imports
- * View the full documentation at https://tailwindcss.com
- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/**
- * WHAT IS THIS FILE?
- *
- * Globally applied styles. No matter which components are in the page or matching route,
- * the styles in here will be applied to the Document, without any sort of CSS scoping.
- *
- */
-
-:root {
-  --qwik-dark-blue: #006ce9;
-  --qwik-light-blue: #18b6f6;
-  --qwik-light-purple: #ac7ff4;
-  --qwik-dark-purple: #713fc2;
-  --qwik-dirty-black: #1d2033;
-  --qwik-dark-background: #151934;
-  --qwik-dark-text: #ffffff;
-}
 
 html {
   line-height: 1;
@@ -39,26 +17,54 @@ body {
   padding: 0;
   margin: 0;
   line-height: inherit;
+  overflow-x: hidden;
 }
 
-/**
- * WHAT IS THIS FILE?
- *
- * Globally applied styles. No matter which components are in the page or matching route,
- * the styles in here will be applied to the Document, without any sort of CSS scoping.
- *
- */
 html {
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: 'Lato', sans-serif;
 }
 
 body {
   padding: 0;
   line-height: inherit;
+}
+
+h1{
+  @apply text-4xl leading-[43px] lg:text-7xl font-medium md:text-5xl
+}
+
+h2{
+  @apply font-medium text-6xl leading-[72px]
+}
+
+h3{
+  @apply font-medium text-5xl leading-[56px]
+}
+
+h4{
+  @apply font-medium text-4xl leading-[43px]
+}
+
+h5{
+ @apply font-medium text-2xl leading-[28px]
+}
+
+h6{
+  @apply font-medium text-lg
+}
+
+p {
+  @apply text-base font-light leading-[30px] text-[#232323] xl:text-lg
+}
+
+button{
+  @apply text-base font-light leading-[30px]
+}
+
+.card{
+  height: min(100vh, 950px);
 }
