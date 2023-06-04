@@ -1,8 +1,10 @@
-export type Activities = Activity[]
+export type Activities = {
+    activities: Activity[]
+}
 
-type Activity = {
-    minTemp?: number;
-    maxTeamp?: number;
+export type Activity = {
+    minTemp: number | null;
+    maxTemp: number | null;
     title: string;
     description: string;
     imageUrl: string;

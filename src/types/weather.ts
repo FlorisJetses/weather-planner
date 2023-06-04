@@ -5,12 +5,12 @@ export type Weather = {
 
 type Temperature = {
     temp: number;
-    metric: string;
+    metric: "CELSIUS" | "FAHRENHEIT";
 }
 
-type WeatherInfo = {
-    minTemp?: number;
-    maxTeamp?: number;
+export type WeatherInfo = {
+    minTemp: number | null;
+    maxTemp: number | null;
     title: string;
     description: string;
     imageUrl: string;
