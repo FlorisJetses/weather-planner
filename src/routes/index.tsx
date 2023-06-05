@@ -12,7 +12,7 @@ export default component$(() => {
   return (
     <div class="flex flex-col xl:flex-row xl:gap-[3%] mb-12">
       <div class="flex flex-col xl:flex-1 xl:sticky xl:top-0 xl:left-0">
-        <div class="bg-purple px-5 pt-5 text-white md:flex xl:items-end md:flex-col md:items-center card">
+        <div class="bg-purple px-5 pt-5 text-white md:flex xl:items-end md:flex-col md:items-center card xl:h-[min(100vh,_950px)] min-h-screen xl:min-h-0">
           <div class="max-w-[600px]">
             <img src={logo} alt="Logo" width={88} height={25} />
             <h1 class="mt-[70px] mb-[30px] ">DEPT® weather planner</h1>
@@ -26,11 +26,10 @@ export default component$(() => {
             </p>
             <p
               aria-hidden={isCollapsed.value}
-              class={`transition-all text-white ${
-                isCollapsed.value
-                  ? "opacity-0 h-0 my-4"
+              class={`transition-all text-white ${isCollapsed.value
+                  ? "opacity-0 h-0 my-4 overflow-hidden"
                   : "opacity-100 h-auto my-8"
-              }`}
+                }`}
             >
               Built with cutting-edge technologies, our weather planner brings
               you accurate, real-time weather data with a slick and
@@ -40,7 +39,7 @@ export default component$(() => {
               on current and forecasted weather conditions.
             </p>
             <button
-              class="border-b-[1px] select-none cursor-pointer lg:border-0 font-light text-base leading-[30px] p-2 -m-2 mb-5 "
+              class="border-b-[1px] select-none cursor-pointer lg:border-0 font-light text-base leading-[30px] p-3 -m-3 mb-5"
               onClick$={() => {
                 isCollapsed.value = !isCollapsed.value;
               }}

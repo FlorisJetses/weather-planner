@@ -65,6 +65,3 @@ button{
   @apply text-base font-light leading-[30px]
 }
 
-.card{
-  height: min(100vh, 950px);
-}
