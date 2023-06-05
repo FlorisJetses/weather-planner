@@ -1,7 +1,7 @@
 import { component$, useSignal } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { Recommendations } from "~/components/home/recommendations";
-import logo from "/logo/dept.svg";
+import logo from "../../public/logo/dept.svg";
 import { Forecast } from "~/components/home/forecast";
 import { Subscribe } from "~/components/home/subscribe";
 
