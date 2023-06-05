@@ -1,10 +1,12 @@
-import { component$ } from "@builder.io/qwik";
-import { useWeather } from "~/routes/layout";
+import { component$, useContext } from "@builder.io/qwik";
+import { WeatherContext, useWeather } from "~/routes/layout";
 import type { WeatherInfo } from "~/types/weather";
 import { isCorrectTemperature } from "~/utils/is-correct-temperature";
 
 export const Forecast = component$(() => {
-  const weatherSignal = useWeather();
+  const weather = useWeather();
+  const cache = useContext(WeatherContext);
+  const weatherSignal = Object.keys(cache.value).length === 0 ? weather : cache;
 
   if (weatherSignal.value.errorMessage) {
     return <p>{weatherSignal.value.errorMessage}</p>;
@@ -14,7 +16,9 @@ export const Forecast = component$(() => {
 
   return (
     <div class="bg-rose flex flex-col p-5 rounded-md sm:flex-row sm:items-center sm:gap-6">
-      <p class="font-medium text-[90px] leading-[108px] text-black">{temperature}˚</p>
+      <p class="font-medium text-[90px] leading-[108px] text-black">
+        {temperature}˚
+      </p>
       <div>
         <h6>It's currently around {temperature}˚ in the Netherlands</h6>
         <p>

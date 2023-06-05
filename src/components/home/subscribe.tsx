@@ -18,7 +18,7 @@ export const Subscribe = component$(() => {
                         <Input placeholder="Enter your e-mailadress" name="email" type="email" required />
                         <Button type="submit">Submit</Button>
                     </Form>
-                    {action.value?.succes && <p>Your email was saved</p>}
+                    {action.value?.succes && <p>Your email was saved!</p>}
                 </div>
             </div>
         </div>
