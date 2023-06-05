@@ -39,7 +39,7 @@ export default component$(() => {
               on current and forecasted weather conditions.
             </p>
             <button
-              class="border-b-[1px] select-none cursor-pointer lg:border-0 font-light text-base leading-[30px] p-3 -m-3 mb-5"
+              class="border-b-[1px] select-none cursor-pointer lg:border-0 font-light text-base leading-[30px] mb-8"
               onClick$={() => {
                 isCollapsed.value = !isCollapsed.value;
               }}

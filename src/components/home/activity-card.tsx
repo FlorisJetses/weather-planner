@@ -11,7 +11,7 @@ export const ActivityCard = component$(({ activity }: ActivityCardProps) => (
         <Image
           src={activity.imageUrl}
           background="#D9D9D9"
-          class="h-[130px] w-[335px] lg:h-[109px] lg:w-[109px]"
+          class="h-[130px] w-full max-w-[335px] lg:h-[109px] lg:w-[109px]"
           layout="fullWidth"
           alt="Activity image"
         />

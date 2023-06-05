@@ -16,7 +16,7 @@ export const Forecast = component$(() => {
 
   return (
     <div class="bg-rose flex flex-col p-5 rounded-md sm:flex-row sm:items-center sm:gap-6">
-      <p class="font-medium text-[90px] leading-[108px] text-black">
+      <p class="font-medium text-[90px] leading-[108px] text-black inline-block">
         {temperature}˚
       </p>
       <div>
