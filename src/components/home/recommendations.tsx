@@ -22,7 +22,7 @@ export const Recommendations = component$(() => {
       ? activities
       : activitiesCache;
 
-  if (weatherSignal.value.errorMessage && activitiesSignal.value.errorMessage) {
+  if (weatherSignal.value.errorMessage !== null || activitiesSignal.value.errorMessage !== null) {
     return <p>{activitiesSignal.value.errorMessage}</p>;
   }
 
@@ -31,7 +31,8 @@ export const Recommendations = component$(() => {
     no: [],
   };
   activitiesSignal.value.activities.forEach((activity: Activity) => {
-    if (isCorrectTemperature(activity, weatherSignal.value.temperature.temp)) {
+    // Added another check for errorMessage because of a bug with typescript in function parameters
+    if (weatherSignal.value.errorMessage === null && isCorrectTemperature(activity, weatherSignal.value.temperature.temp)) {
       shouldPerformActivity.yes.push(activity);
     } else {
       shouldPerformActivity.no.push(activity);

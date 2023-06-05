@@ -8,7 +8,7 @@ export const Forecast = component$(() => {
   const cache = useContext(WeatherContext);
   const weatherSignal = Object.keys(cache.value).length === 0 ? weather : cache;
 
-  if (weatherSignal.value.errorMessage) {
+  if (weatherSignal.value.errorMessage !== null) {
     return <p>{weatherSignal.value.errorMessage}</p>;
   }
 
@@ -25,7 +25,7 @@ export const Forecast = component$(() => {
           {
             weatherSignal.value.weatherInfo.find((info: WeatherInfo) => {
               return isCorrectTemperature(info, temperature);
-            }).description
+            })?.description
           }
         </p>
       </div>
